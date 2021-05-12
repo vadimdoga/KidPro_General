@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, List, Header } from 'semantic-ui-react'
+import { Modal, List} from 'semantic-ui-react'
 
 export default class CourseDetails extends Component {
     constructor(props) {

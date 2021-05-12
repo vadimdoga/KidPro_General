@@ -19,7 +19,6 @@ const content_style = {
     paddingBottom: "2.5rem"
 }
 
-let groupedListOfCourses = []
 
 class Courses extends Component {
     constructor(props) {
