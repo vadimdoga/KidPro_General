@@ -8,8 +8,8 @@ export default class Courses extends Component {
         super(props)
 
         this.state = {
-            pubCourses: [<EnrolledCourse courseName="Mathematics 1" courseType="public" courseProgress={20} />, <EnrolledCourse courseName="Mathematics 2" courseType="public" courseProgress={60} />],
-            prvCourses: [<EnrolledCourse courseName="English" courseType="private" courseProgress={20} />]
+            pubCourses: [<EnrolledCourse courseName="Mathematics 1" courseType="public" solvedTopics='3' totalTopics='8' />, <EnrolledCourse courseName="Mathematics 2" courseType="public" solvedTopics='7' totalTopics='8' />],
+            prvCourses: [<EnrolledCourse courseName="English" courseType="private" solvedTopics='1' totalTopics='8' />]
         }
     }
 

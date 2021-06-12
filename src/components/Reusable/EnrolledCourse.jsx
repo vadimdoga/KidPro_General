@@ -8,14 +8,15 @@ export default class EnrolledCourse extends Component {
         this.state = {
             courseType: this.props.courseType,
             courseName: this.props.courseName,
-            courseProgress: this.props.courseProgress
+            solvedTopics: this.props.solvedTopics,
+            totalTopics: this.props.totalTopics
         }
     }
     render() {
         return (
             <Segment>
                 <h4>{this.state.courseName} <Button style={{ padding: "0 0.8rem", height: "1.5rem", marginLeft: "2rem", fontSize: "70%" }} color="linkedin">Resume</Button></h4>
-                <Progress color={this.state.courseType === "public" ? "blue": "red" } percent={ this.state.courseProgress }/>
+                <Progress color={this.state.courseType === "public" ? "blue": "red" } value={this.state.solvedTopics} total={this.state.totalTopics} progress='ratio'/>
             </Segment>
         )
     }
