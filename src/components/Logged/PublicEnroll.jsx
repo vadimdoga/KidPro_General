@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from "react-router-dom";
 import { v4 as uuid } from "uuid"
-import { Label, Rating, Card, Grid, Segment } from 'semantic-ui-react';
+import { Label, Rating, Card, Grid, Segment, Header, Button } from 'semantic-ui-react';
 
 import CourseDetails from "../Reusable/CourseDetails"
 
@@ -9,7 +9,7 @@ import CourseDetails from "../Reusable/CourseDetails"
 let groupedListOfGrades = []
 
 
-class Courses extends Component {
+class PublicCourses extends Component {
     constructor(props) {
         super(props)
 
@@ -40,7 +40,28 @@ class Courses extends Component {
                 "rating": 3,
                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
                 "grade": "2"
-            }
+            },
+            {
+                "id": uuid(),
+                "name": "Maths",
+                "rating": 3,
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+                "grade": "2"
+            },
+            {
+                "id": uuid(),
+                "name": "Physics",
+                "rating": 3,
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+                "grade": "2"
+            },
+            {
+                "id": uuid(),
+                "name": "Keyboard",
+                "rating": 3,
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+                "grade": "2"
+            },
         ]
 
         const grades = [
@@ -78,8 +99,11 @@ class Courses extends Component {
 
     listCourses(value) {
         if (value["grade"] === this.state.courseGrade) {
-            return <Card key={value["id"]}>
-                <Card.Content header={value["name"]} />
+            return <Card style={{width: "25%", margin: "1rem 2.5rem"}} key={value["id"]}>
+                <Card.Content style={{display: "flex", justifyContent: "space-between"}}>
+                    <Header>{value["name"]}</Header>
+                    <Button style={{ padding: "0 0.8rem", height: "1.5rem", marginLeft: "auto", fontSize: "70%" }} color="google plus">Enroll</Button>
+                </Card.Content>
                 <Card.Content description={value["description"]} />
                 <Card.Content extra>
                     <Label color="yellow" horizontal>Rating</Label>
@@ -131,7 +155,6 @@ class Courses extends Component {
         return (
             <div>
                 <Segment vertical>
-                    <h3>Choose a corresponding grade</h3>
                     <Grid style={{ margin: "auto", width: "80%" }}>
                         {
                             this.state.listOfGrades.map(this.listGrades)
@@ -139,7 +162,6 @@ class Courses extends Component {
                     </Grid>
                 </Segment>
                 <Segment vertical>
-                    <h3 style={{ margin: "2rem" }}>List Of Courses</h3>
                     <Card.Group>
                         {this.state.listOfCourses.map(this.listCourses)}
                     </Card.Group>
@@ -150,4 +172,4 @@ class Courses extends Component {
     }
 }
 
-export default withRouter(Courses)
+export default withRouter(PublicCourses)
