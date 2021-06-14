@@ -81,7 +81,8 @@ export default class PracticeAction extends Component {
             exercises: practiceDetails['exercises'],
             currentQuestion: 0,
             totalQuestions: practiceDetails['exercises'].length,
-            courseID: courseID
+            courseID: courseID,
+            practiceName: practiceDetails["name"]
         })
     }
 
@@ -97,7 +98,7 @@ export default class PracticeAction extends Component {
                 <Header />
 
                 <Segment style={main_segment_style}>
-                    <h3>Practice Name</h3>
+                    <h3>{ this.state.practiceName }</h3>
                     <Image centered src={exampleImg} size='medium' />
                     <p>{this.state.description}</p>
 
