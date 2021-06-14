@@ -27,7 +27,7 @@ export default class PracticeAction extends Component {
         this.obtainNext = this.obtainNext.bind(this)
 
         this.state = {
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam iaculis dui eget quam lacinia, eget blandit lectus tristique. Integer vitae justo ex. In vehicula semper magna, et venenatis metus dignissim non. Nullam ut odio id arcu ullamcorper faucibus vel non metus. Sed hendrerit urna sit amet libero efficitur, quis vestibulum sem pharetra. Nullam lorem tellus, sodales sed hendrerit vel, rhoncus quis arcu. Suspendisse quis mollis arcu. Suspendisse suscipit lorem vel elit hendrerit lacinia.",
+            description: "This is a description of the course",
             currentQuestion: 0,
             totalQuestions: 0,
             exercises: [],
