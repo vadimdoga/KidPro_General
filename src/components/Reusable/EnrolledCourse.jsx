@@ -15,7 +15,7 @@ export default class EnrolledCourse extends Component {
     render() {
         return (
             <Segment>
-                <h4>{this.state.courseName} <Button style={{ padding: "0 0.8rem", height: "1.5rem", marginLeft: "2rem", fontSize: "70%" }} color="linkedin">Resume</Button></h4>
+                <h4>{this.state.courseName} <Button onClick={() => window.location.href = "/courses/solve/" + this.props.id} style={{ padding: "0 0.8rem", height: "1.5rem", marginLeft: "2rem", fontSize: "70%" }} color="linkedin">Resume</Button></h4>
                 <Progress color={this.state.courseType === "public" ? "blue": "red" } value={this.state.solvedTopics} total={this.state.totalTopics} progress='ratio'/>
             </Segment>
         )

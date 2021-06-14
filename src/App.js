@@ -6,6 +6,8 @@ import PublicEnroll from "./components/Logged/PublicEnroll"
 import PrivateEnroll from "./components/Logged/PrivateEnroll"
 import Subscription from "./components/Logged/Subscription"
 import CourseAction from "./components/CourseAction/CourseAction"
+import PracticeAction from "./components/CourseAction/PracticeAction"
+import LectureAction from "./components/CourseAction/LectureAction"
 import './App.css';
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
                 <Route exact path="/courses/enroll/public" component={PublicEnroll} />
                 <Route exact path="/courses/enroll/private" component={PrivateEnroll} />
                 <Route exact path="/courses/solve/:id" component={CourseAction} />
+                <Route exact path="/courses/solve/practice/:id" component={PracticeAction} />
+                <Route exact path="/courses/solve/lecture/:id" component={LectureAction} />
                 <Route exact path="/subscription" component={Subscription} />
                 <Route exact path="/auth/login" component={SignIn} />
                 <Route exact path="/auth/register" component={Register} />

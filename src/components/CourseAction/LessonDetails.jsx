@@ -16,6 +16,11 @@ export default class LessonDetails extends Component {
     constructor(props) {
         super(props)
 
+        this.createPracticesContent = this.createPracticesContent.bind(this)
+        this.createLecturesContent = this.createLecturesContent.bind(this)
+        this.generateLink = this.generateLink.bind(this)
+        this.orderContent = this.orderContent.bind(this)
+
         this.state = {
             lessonDescription: this.props.lessonDescription,
             lessonName: this.props.lessonName,
@@ -24,21 +29,36 @@ export default class LessonDetails extends Component {
         }
     }
 
-    createContent([key, value]) {
-        const id = "list-of-exercises-" + key
-        const content = <Grid.Row id={id} divided>
+    generateLink(value) {
+        window.location.href = "/courses/solve/practice/" + value["id"] + "?courseID=" + this.props.courseID + "&lessonID=" + this.props.id
+        return window
+    }
+
+    createLecturesContent([key, value]) {
+        const content = <Grid.Row id={value["id"]} divided>
             <Grid.Column width={3}>{ value["name"] }</Grid.Column>
             <Grid.Column width={11}>{ value["description"] }</Grid.Column>
             <Grid.Column width={2}>
-                <Button style={{fontSize: "0.8rem"}} color="vk">Start/Resume</Button>
+                <Button onClick={() => window.location.href = "/courses/solve/lecture/" + value["id"]} style={{fontSize: "0.8rem"}} color="vk">Start/Resume</Button>
+            </Grid.Column>
+        </Grid.Row>
+        return {"order": value["order"], "content": content}
+    }
+
+    createPracticesContent([key, value]) {
+        const content = <Grid.Row id={value["id"]} divided>
+            <Grid.Column width={3}>{ value["name"] }</Grid.Column>
+            <Grid.Column width={11}>{ value["description"] }</Grid.Column>
+            <Grid.Column width={2}>
+                <Button onClick={() => this.generateLink(value)} style={{fontSize: "0.8rem"}} color="vk">Start/Resume</Button>
             </Grid.Column>
         </Grid.Row>
         return {"order": value["order"], "content": content}
     }
 
     orderContent() {
-        const lectures = Object.entries(this.state.lectures).map(this.createContent)
-        const practices = Object.entries(this.state.practices).map(this.createContent)
+        const lectures = Object.entries(this.state.lectures).map(this.createLecturesContent)
+        const practices = Object.entries(this.state.practices).map(this.createPracticesContent)
 
         const newArr = [...lectures, ...practices]
 

@@ -29,12 +29,19 @@ export default class CourseAction extends Component {
     }
 
     componentDidMount() {
-        const jsonData = get_json()
         const id = this.props.match.params.id
+        const jsonData = get_json()
+        let filteredJsonData = null
+
+        jsonData.forEach(el => {
+            if (el["id"] == id)
+                filteredJsonData = el
+        })
 
         this.setState({
-            lessons: jsonData["lessons"],
-            courseName: jsonData["name"]
+            lessons: filteredJsonData["lessons"],
+            courseName: filteredJsonData["name"],
+            courseID: filteredJsonData["id"]
         })
 
     }
@@ -43,6 +50,7 @@ export default class CourseAction extends Component {
         return this.state.lessons.map(lesson => {
             return <LessonDetails
                 id={lesson['id']}
+                courseID={this.state.courseID}
                 lessonDescription={lesson['description']}
                 lessonName={lesson['name']}
                 lectures={lesson['lectures']}
@@ -57,7 +65,7 @@ export default class CourseAction extends Component {
                 <Header />
 
                 <Segment style={main_segment_style}>
-                    <h3>{ this.state.courseName }</h3>
+                    <h3>My Lessons</h3>
                     {this.listLessons()}
                 </Segment>
             </div>

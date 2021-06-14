@@ -2,15 +2,28 @@ import React, { Component } from 'react'
 import { Grid, Segment, Button } from 'semantic-ui-react'
 import EnrolledCourse from "../Reusable/EnrolledCourse"
 import EnrollmentModal from "./EnrollmentModal"
+import {get_json} from "../../adapters/auth"
 
 export default class Courses extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            pubCourses: [<EnrolledCourse courseName="Mathematics 1" courseType="public" solvedTopics='3' totalTopics='8' />, <EnrolledCourse courseName="Mathematics 2" courseType="public" solvedTopics='7' totalTopics='8' />],
+            pubCourses: [],
             prvCourses: [<EnrolledCourse courseName="English" courseType="private" solvedTopics='1' totalTopics='8' />]
         }
+    }
+
+    componentDidMount() {
+        const jsonData = get_json()
+
+        const arr = jsonData.map(course => {
+            return <EnrolledCourse id={course["id"]} courseName={course["name"]} courseType="public" solvedTopics='3' totalTopics='8' />
+        })
+
+        this.setState({
+            pubCourses: arr
+        })
     }
 
     listPulicCourses() {
