@@ -18,7 +18,8 @@ export default class LessonDetails extends Component {
 
         this.createPracticesContent = this.createPracticesContent.bind(this)
         this.createLecturesContent = this.createLecturesContent.bind(this)
-        this.generateLink = this.generateLink.bind(this)
+        this.generatePracticeLink = this.generatePracticeLink.bind(this)
+        this.generateLectureLink = this.generateLectureLink.bind(this)
         this.orderContent = this.orderContent.bind(this)
 
         this.state = {
@@ -29,8 +30,13 @@ export default class LessonDetails extends Component {
         }
     }
 
-    generateLink(value) {
+    generatePracticeLink(value) {
         window.location.href = "/courses/solve/practice/" + value["id"] + "?courseID=" + this.props.courseID + "&lessonID=" + this.props.id
+        return window
+    }
+
+    generateLectureLink(value) {
+        window.location.href = "/courses/solve/lecture/" + value["id"] + "?courseID=" + this.props.courseID + "&lessonID=" + this.props.id
         return window
     }
 
@@ -39,7 +45,7 @@ export default class LessonDetails extends Component {
             <Grid.Column width={3}>{ value["name"] }</Grid.Column>
             <Grid.Column width={11}>{ value["description"] }</Grid.Column>
             <Grid.Column width={2}>
-                <Button onClick={() => window.location.href = "/courses/solve/lecture/" + value["id"]} style={{fontSize: "0.8rem"}} color="vk">Start/Resume</Button>
+                <Button onClick={() => this.generateLectureLink(value)} style={{fontSize: "0.8rem"}} color="vk">Start/Resume</Button>
             </Grid.Column>
         </Grid.Row>
         return {"order": value["order"], "content": content}
@@ -50,7 +56,7 @@ export default class LessonDetails extends Component {
             <Grid.Column width={3}>{ value["name"] }</Grid.Column>
             <Grid.Column width={11}>{ value["description"] }</Grid.Column>
             <Grid.Column width={2}>
-                <Button onClick={() => this.generateLink(value)} style={{fontSize: "0.8rem"}} color="vk">Start/Resume</Button>
+                <Button onClick={() => this.generatePracticeLink(value)} style={{fontSize: "0.8rem"}} color="vk">Start/Resume</Button>
             </Grid.Column>
         </Grid.Row>
         return {"order": value["order"], "content": content}
