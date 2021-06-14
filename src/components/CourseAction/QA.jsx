@@ -58,10 +58,10 @@ export default class QA extends Component {
         })
 
         if (!state.includes(false)) {
-            alert("true")
+            alert("You did great!")
             this.props.obtainNext()
         } else
-            alert("false")
+            alert("Try again!")
     }
 
     render() {

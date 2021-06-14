@@ -9,7 +9,7 @@ import QA from "./QA"
 import exampleImg from "../../assets/example.jpg"
 
 const main_segment_style = {
-    width: "80%",
+    width: "70%",
     margin: "5rem auto",
     paddingBottom: "2.5rem",
     backgroundColor: "#93E2D5"
@@ -105,7 +105,7 @@ export default class PracticeAction extends Component {
                         synthesizeSpeech(this.state.description)
                     }} style={{ padding: "0 0.8rem", height: "1.5rem", marginLeft: "80%", fontSize: "70%" }} color="blue">Text-to-Speech</Button>
 
-                    <Segment>
+                    <Segment style={{width: "70%", margin: "auto"}}>
                         <h5>Question {this.state.currentQuestion + 1} of {this.state.totalQuestions}
                             <Button
                                 onClick={this.state.nextFunction}
